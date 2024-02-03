@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: esphome
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: esphome
+  template:
+    metadata:
+      labels:
+        app: esphome
+    spec:
+      containers:
+      - name: esphome
+        image: esphome/esphome
+        ports:
+        - containerPort: 6052 # ESPHome API port
+        - containerPort: 6123 # ESPHome Dashboard port
